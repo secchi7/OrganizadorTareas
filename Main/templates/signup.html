@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+{{error}}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <h1 class="text-center">Registrarse</h1>
+            <form action="/signup/" method="POST" class="card card-body" id="registro">
+                
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" name="username" id="username" class="form-control"
+                        placeholder="Escriba su nombre de usuario">
+                </div>
+                <div class="mb-3">
+                    <label for="mail">Mail</label>
+                    <input type="text" name="mail" id="mail" class="form-control" placeholder="Escriba su mail" title="Mail inválido.">
+                </div>
+                <div class="mb-3">
+                    <label for="repeat_mail">Confirme su mail</label>
+                    <input type="text" name="repeat_mail" id="repeat_mail" class="form-control" placeholder="Repita su mail" title="Mail diferente.">
+                </div>
+                <div class="mb-3">
+                    <label for="pass">Contraseña:</label>
+                    <input type="password" name="pass" id="pass" class="form-control"
+                        placeholder="Escriba su contraseña" title='1 min, 1 mayus, 1 num y 1 de @$?_\-¡!'>
+                </div>
+                <div class="mb-3">
+                    <label for="repeat_pass">Confirme su contraseña:</label>
+                    <input type="password" name="repeat_pass" id="repeat_pass" class="form-control"
+                        placeholder="Repita su contraseña" title="Contraseña diferente.">
+                </div>
+                <button type="submit" class="btn btn-dark">Crear Usuario</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/validate.js' %}" defer></script>
+
+</main>
+
+{% endblock %}
+

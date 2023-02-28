@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <section class="col-md-4 offset-md-4 mt-5">
+            <form action="/signin/" method="POST" class="card card-body">
+
+                {% csrf_token %}
+
+                <h1 class="text-center">Iniciar Sesión</h1>
+
+                {{error}}
+
+                {% csrf_token %}
+                <label for="username">Nombre de usuario:</label>
+                <div class="mb-3">
+                    <input type="text" name="username" id="username" class="form-control"
+                        placeholder="Escriba su nombre de usuario">
+                </div>
+                
+                <label class="mt-30" for="pass">Contraseña:</label>
+                <div class="d-flex">
+                    <input type="password" name="pass" id="pass" class="input-group form-control"
+                        placeholder="Escriba su contraseña">
+                    <span class="input-group-text">
+                        <i class="bi bi-eye-slash-fill" id="togglePassword" style="cursor: pointer"></i>
+                    </span>
+                </div>
+
+                <button class="mt-3 btn btn-dark">
+                    Ingresar
+                </button>
+
+            </form>
+        </section>
+    </div>
+    <script src="{% static 'js/show-hide.js' %}" defer></script>
+</main>
+
+{% endblock %}
